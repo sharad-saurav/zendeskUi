@@ -1,0 +1,43 @@
+<div class="loading" *ngIf="imageKey">Loading&#8230;</div>
+<div class="container">
+    <h4 style="text-align: center;">User Repos</h4>
+
+        <div class="example-container mat-elevation-z8">
+            <div class="example-table-container">
+                <mat-form-field>
+                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                  </mat-form-field>
+          
+              <table mat-table [dataSource]="dataSource" class="example-table">
+                <!-- Number Column -->
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef>Name</th>
+                  <td mat-cell *matCellDef="let row">{{row.name}}</td>
+                </ng-container>
+          
+                <!-- Title Column -->
+                <ng-container matColumnDef="description">
+                  <th mat-header-cell *matHeaderCellDef>Description</th>
+                  <td mat-cell *matCellDef="let row">{{row.description}}</td>
+                </ng-container>
+          
+                <!-- State Column -->
+                <ng-container matColumnDef="private">
+                  <th mat-header-cell *matHeaderCellDef>Private</th>
+                  <td mat-cell *matCellDef="let row">{{row.private}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="url">
+                    <th mat-header-cell *matHeaderCellDef>URL</th>
+                    <td mat-cell *matCellDef="let row">{{row.url}}</td>
+                  </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+            </div>
+          
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+          </div>
+</div>
