@@ -1,0 +1,32 @@
+<div class="container">
+  <table>
+    <tbody>
+    <td><input type="text" class="form-control" required="true" name="ticketId" placeholder="Enter TicketID" [(ngModel)]="ticketId"></td>
+    <td><input type="text" class="form-control" required="true" name="rrn" placeholder="Enter RRN" [(ngModel)]="rrn"></td>
+    <td><button mat-raised-button color="primary" (click)="checkRrn(rrn)">Show</button></td>
+    <td><button mat-raised-button color="primary" (click)="continue()">Continue</button></td>
+    </tbody>
+  </table>
+
+  <div class="row mat-elevation-z6" *ngIf="cont" style="margin-top: 50px; padding: 20px">
+    <div class="col-sm-12">
+    <div class="form-group">
+      <label>Ticket Type: </label>
+      &nbsp;
+
+      <label class="radio-inline">
+        <input type="radio" name="transactionFailure" value='transactionFailure' [(ngModel)]="ticket.type" >Transaction Failure
+      </label>
+
+      <label class="radio-inline" style="margin-left: 20px">
+        <input type="radio" name="merchantRefund" value='merchantRefund' [(ngModel)]="ticket.type"> Merchant Refund
+      </label>
+
+    </div>
+    </div>
+    <div class="col-sm-12">
+      <label>Is Proof Available</label>
+      <input type="checkbox" name="isProof" [(ngModel)]="ticket.isProof" (click)="getCheckBox(isProof)" style="margin-left:10px ">
+    </div>
+  </div>
+</div>
